@@ -1,6 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexun directional crawler</title>
+    <url>/post/80fe.html</url>
+    <content><![CDATA[<blockquote>
+<p>前言<br>本文记录帮朋友之忙而写的一个简单的定向爬虫</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><blockquote>
+<p>电脑上需要安装有python3。<br>关于在Windows上如何安装python3的教程，网络上有很多可以参考的，并且现在python3的安装已经优化得十分容易安装了。</p>
+</blockquote>
+<h2 id="第三方包-库的安装"><a href="#第三方包-库的安装" class="headerlink" title="第三方包/库的安装"></a>第三方包/库的安装</h2><blockquote>
+<p>此文章的定向爬虫需要三个第三方库/包，分别是<code>requests</code>库、<code>demjson</code>库、<code>tablib</code>库。<br><code>requests</code>库：用来向网络发起请求，即向指定URL申请网页资源；<br><code>demjson</code>库：用来将非标准的JSON格式转换为标准的JSON格式，或者说是转换成字典，因为本程序就是被转换成了字典；<br><code>tablib</code>库：用来将处理好的数据写入XLSX格式的文件中。</p>
+</blockquote>
+<h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h3><p>在<code>Windows</code>下使用<code>WIN+R</code>打开运行窗口，输入<code>cmd</code>回车，打开命令黑窗口，在此窗口下依次执行如下安装命令，每执行一个命令按一下回车：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">pip <span class="keyword">install</span> requests</span><br><span class="line">pip <span class="keyword">install</span> demjson</span><br><span class="line">pip <span class="keyword">install</span> tablib</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><blockquote>
+<p>因为本程序爬虫不是完整版的，每抓取和讯网一年的数据就需要更改一下几个变量的值，分别是<code>urla</code>、<code>pages</code>，以及<code>open()</code>里面的路径</p>
+</blockquote>
+<h3 id="urla的值"><a href="#urla的值" class="headerlink" title="urla的值"></a>urla的值</h3><blockquote>
+<p>将此变量的值之中的<code>date=xxxx-12-31</code>更改成需要爬取的年份<br>比如需要2015年的数据，就改成<code>date=2015-12-31</code></p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">urla</span> = <span class="string">&quot;http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=2018-12-31&amp;count=20&amp;pname=20&amp;titType=null&amp;page=&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="pages的值"><a href="#pages的值" class="headerlink" title="pages的值"></a>pages的值</h3><blockquote>
+<p>此变量是当年数据的页数，也就是说，如果是要爬取2018年的数据，在和讯网上这一年的数据一共有208页，想要哪一年的数据，就现在和讯网上看这一年的数据有多少页，这个页数在网页中数据表格的下面</p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">pages</span> = <span class="number">208</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="open-中的值"><a href="#open-中的值" class="headerlink" title="open()中的值"></a>open()中的值</h3><blockquote>
+<p>open()括号中的值是爬取数据的存储路径，注意格式的编写，改成自己的电脑路径即可</p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">open</span><span class="params">(<span class="string">&#x27;C:\\Users\\song\\Desktop\\2018-data.xlsx&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>)</span></span><span class="selector-class">.write</span>(allData.xlsx)</span><br></pre></td></tr></table></figure>
+
+<h2 id="程序运行"><a href="#程序运行" class="headerlink" title="程序运行"></a>程序运行</h2><blockquote>
+<p>改好程序的相关变量后保存，然后右键点击文件，点击属性，获取该程序文件的路径，比如我的程序存储在<code>F:\2021dasixia\stest</code>下，接着<code>WIN</code>+<code>R</code>打开运行窗口，输入<code>cmd</code>回车打开命令黑窗口，将获取的程序存储路径和程序名字拼接在一起，执行如下命令，即可爬取指定年份的社会责任数据<br>拼接后的完整路径：<code>F:\2021dasixia\stest\hexunScrapySpider.py</code></p>
+</blockquote>
+<figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line">#Windows下在命令黑窗口执行程序命令</span><br><span class="line">python F:<span class="symbol">\2</span>021dasixia<span class="symbol">\s</span>test<span class="symbol">\h</span>exunScrapySpider.py</span><br></pre></td></tr></table></figure>
+
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><p><a href="https://github.com/wencongzhao/hexunScrapySpider">完整代码</a></p>
+]]></content>
+      <categories>
+        <category>Tech</category>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>crawler</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HEXO Usage</title>
+    <url>/post/de9d.html</url>
+    <content><![CDATA[<blockquote>
+<p>前言<br><strong>Hexo</strong>常用命令记录</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="基本Hexo操作"><a href="#基本Hexo操作" class="headerlink" title="基本Hexo操作"></a>基本Hexo操作</h2><h3 id="清理Hexo的缓存"><a href="#清理Hexo的缓存" class="headerlink" title="清理Hexo的缓存"></a>清理Hexo的缓存</h3><p>用于清理<code>Hexo</code>的缓存，建议生成进行操作之前都进行<code>clean</code>操作，可以消除不必要的<code>bug</code></p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo clean</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="渲染生成静态页面"><a href="#渲染生成静态页面" class="headerlink" title="渲染生成静态页面"></a>渲染生成静态页面</h3><p>用于根据已编辑的<code>config</code>或<code>markdown</code>生成<code>html</code>页面</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo g</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="挂载部署生成的静态页面"><a href="#挂载部署生成的静态页面" class="headerlink" title="挂载部署生成的静态页面"></a>挂载部署生成的静态页面</h3><p>将生成的网页<code>deploy</code>到设定好的位置，可以是<code>Github Pages</code> ，也可以是一个<code>IP</code>等等，取决于站点配置文件<code>_config.yaml</code>文件里的配置</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo d</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="挂载到本地运行"><a href="#挂载到本地运行" class="headerlink" title="挂载到本地运行"></a>挂载到本地运行</h3><p>将生成的网页挂载在本地主机<code>IP</code>的<code>4000</code>端口上，可以在正式发布前检验页面的内容和样式是否正确无误</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo s</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="生成博客新文章"><a href="#生成博客新文章" class="headerlink" title="生成博客新文章"></a>生成博客新文章</h3><p>在<code>Git</code>窗口使用该命令可以在<code>D:\Blog\source\_posts</code>生成一个<code>.md</code>格式的<code>Markdown</code>文件，此即博客新文章。<a href="https://wensix.github.io/post/3eeb.html">更多参考</a></p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type"></span>&quot;My <span class="keyword">new</span> <span class="type">post</span>&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.chenlianhan.com/2020/03/20/HEXO-NEXT%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89">http://www.chenlianhan.com/2020/03/20/HEXO-NEXT%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89</a></li>
+<li><a href="https://wensix.github.io/post/3eeb.html">https://wensix.github.io/post/3eeb.html</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>command</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git Usage</title>
+    <url>/post/9b4f.html</url>
+    <content><![CDATA[<blockquote>
+<p><strong>Git</strong> 使用手册<br>本文主要记录使用<strong>Git</strong>这个软件中一些个人常用的命令</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="查看当前-Git-用户"><a href="#查看当前-Git-用户" class="headerlink" title="查看当前 Git 用户"></a>查看当前 Git 用户</h3><figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">git</span> <span class="comment">config</span> --<span class="comment">global</span> --<span class="comment">list</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="更换用户"><a href="#更换用户" class="headerlink" title="更换用户"></a>更换用户</h3><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.name</span> <span class="string">&quot;wensix&quot;</span></span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.email</span> <span class="string">&quot;2804849229@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Clone仓库"><a href="#Clone仓库" class="headerlink" title="Clone仓库"></a>Clone仓库</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/wensix/</span>hello-world.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h3><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git status</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仓库提交日志"><a href="#查看仓库提交日志" class="headerlink" title="查看仓库提交日志"></a>查看仓库提交日志</h3><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="本地仓库新增文件同步到云仓库"><a href="#本地仓库新增文件同步到云仓库" class="headerlink" title="本地仓库新增文件同步到云仓库"></a>本地仓库新增文件同步到云仓库</h3><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">add</span> <span class="keyword">test</span><span class="number">.</span>txt</span><br><span class="line">git commit -m <span class="string">&quot;test.txt&quot;</span></span><br><span class="line">git <span class="keyword">push</span> origin main</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">touch <span class="built_in">config</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="SSH创建公私密钥"><a href="#SSH创建公私密钥" class="headerlink" title="SSH创建公私密钥"></a>SSH创建公私密钥</h3><figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> rsa</span><br><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> dsa</span><br><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> <span class="symbol">ed25519</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">ssh -T <span class="symbol">git@</span>github.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="ssh-add命令"><a href="#ssh-add命令" class="headerlink" title="ssh-add命令"></a>ssh-add命令</h3><h4 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h4><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ssh-agent bash</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="当前用户和密钥，查看ssh-agent中的密钥"><a href="#当前用户和密钥，查看ssh-agent中的密钥" class="headerlink" title="当前用户和密钥，查看ssh-agent中的密钥"></a>当前用户和密钥，查看ssh-agent中的密钥</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">ssh-<span class="builtin-name">add</span> -l</span><br></pre></td></tr></table></figure>
+
+<h4 id="从ssh-agent中删除密钥"><a href="#从ssh-agent中删除密钥" class="headerlink" title="从ssh-agent中删除密钥"></a>从ssh-agent中删除密钥</h4><figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">ssh-add -d ~<span class="regexp">/.ssh/i</span>d_xxx.pub</span><br></pre></td></tr></table></figure>
+
+<h4 id="把专用密钥添加到-ssh-agent-的高速缓存中"><a href="#把专用密钥添加到-ssh-agent-的高速缓存中" class="headerlink" title="把专用密钥添加到 ssh-agent 的高速缓存中"></a>把专用密钥添加到 ssh-agent 的高速缓存中</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">ssh-add <span class="regexp">/c/</span>Users<span class="regexp">/wencongzhao/</span>.ssh/id_ed25519</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI-wcz test</title>
+    <url>/post/f6f3.html</url>
+    <content><![CDATA[<p>I am AI-wcz.<br>I am writing a new page.<br>This is part of my code:</p>
+<span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> demjson</span><br><span class="line"><span class="keyword">import</span> tablib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLDATA</span>(<span class="params">url, kv</span>):</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		r = requests.get(url, headers = kv, timeout = <span class="number">30</span>)</span><br><span class="line">		r.raise_for_status()</span><br><span class="line">		r.encoding = r.apparent_encoding</span><br><span class="line">		<span class="keyword">return</span> r.text</span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;ERROR&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">	urla = <span class="string">&quot;http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=2018-12-31&amp;count=20&amp;pname=20&amp;titType=null&amp;page=&quot;</span></span><br><span class="line">	pages = <span class="number">208</span></span><br><span class="line">	kv = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36&#x27;</span>&#125;</span><br><span class="line">	data = []</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,pages+<span class="number">1</span>):</span><br><span class="line">		url = urla + <span class="built_in">str</span>(page)</span><br><span class="line">		demo = getHTMLDATA(url, kv)</span><br><span class="line">		html = demo[<span class="number">13</span>:-<span class="number">1</span>]</span><br><span class="line">		dataDict = demjson.decode(html)</span><br><span class="line">		dataList = dataDict[<span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">		<span class="keyword">for</span> dictInList <span class="keyword">in</span> dataList:</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;StockNameLink&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Hstock&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Wstock&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Tstock&#x27;</span>]</span><br><span class="line">		data += dataList</span><br><span class="line">		time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">	allData = []</span><br><span class="line">	tableHeader = <span class="built_in">tuple</span>([<span class="string">&quot;序号&quot;</span>,<span class="string">&quot;股票名称/代码&quot;</span>,<span class="string">&quot;股东责任&quot;</span>,<span class="string">&quot;总得分&quot;</span>,<span class="string">&quot;等级&quot;</span>,<span class="string">&quot;员工责任&quot;</span>,<span class="string">&quot;供应商、客户和消费者权益责任&quot;</span>,<span class="string">&quot;环境责任&quot;</span>,<span class="string">&quot;社会责任&quot;</span>])</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> row <span class="keyword">in</span> data:</span><br><span class="line">		body = []</span><br><span class="line">		<span class="keyword">for</span> v <span class="keyword">in</span> row.values():</span><br><span class="line">			body.append(v)</span><br><span class="line">		allData.append(<span class="built_in">tuple</span>(body))</span><br><span class="line">	</span><br><span class="line">	allData = tablib.Dataset(*allData, headers=tableHeader)</span><br><span class="line">	<span class="built_in">open</span>(<span class="string">&#x27;C:\\Users\\song\\Desktop\\2018-data.xlsx&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>).write(allData.xlsx)</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<p>Good to see you!</p>
+]]></content>
+      <categories>
+        <category>Test</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/post/3eeb.html</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -20,33 +168,12 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
       <categories>
-        <category>自动生成</category>
-        <category>Hexo</category>
+        <category>Others</category>
       </categories>
       <tags>
-        <tag>hello world</tag>
-        <tag>auto</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AI-wcz test</title>
-    <url>/post/f6f3.html</url>
-    <content><![CDATA[<p>I am AI-wcz.</p>
-<p>I’m writing a new page.</p>
-<p>This is part of my code:</p>
-<span id="more"></span>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> demjson</span><br><span class="line"><span class="keyword">import</span> tablib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLDATA</span>(<span class="params">url, kv</span>):</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		r = requests.get(url, headers = kv, timeout = <span class="number">30</span>)</span><br><span class="line">		r.raise_for_status()</span><br><span class="line">		r.encoding = r.apparent_encoding</span><br><span class="line">		<span class="keyword">return</span> r.text</span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;ERROR&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">	urla = <span class="string">&quot;http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=2018-12-31&amp;count=20&amp;pname=20&amp;titType=null&amp;page=&quot;</span></span><br><span class="line">	pages = <span class="number">208</span></span><br><span class="line">	kv = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36&#x27;</span>&#125;</span><br><span class="line">	data = []</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,pages+<span class="number">1</span>):</span><br><span class="line">		url = urla + <span class="built_in">str</span>(page)</span><br><span class="line">		demo = getHTMLDATA(url, kv)</span><br><span class="line">		html = demo[<span class="number">13</span>:-<span class="number">1</span>]</span><br><span class="line">		dataDict = demjson.decode(html)</span><br><span class="line">		dataList = dataDict[<span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">		<span class="keyword">for</span> dictInList <span class="keyword">in</span> dataList:</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;StockNameLink&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Hstock&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Wstock&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Tstock&#x27;</span>]</span><br><span class="line">		data += dataList</span><br><span class="line">		time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">	allData = []</span><br><span class="line">	tableHeader = <span class="built_in">tuple</span>([<span class="string">&quot;序号&quot;</span>,<span class="string">&quot;股票名称/代码&quot;</span>,<span class="string">&quot;股东责任&quot;</span>,<span class="string">&quot;总得分&quot;</span>,<span class="string">&quot;等级&quot;</span>,<span class="string">&quot;员工责任&quot;</span>,<span class="string">&quot;供应商、客户和消费者权益责任&quot;</span>,<span class="string">&quot;环境责任&quot;</span>,<span class="string">&quot;社会责任&quot;</span>])</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> row <span class="keyword">in</span> data:</span><br><span class="line">		body = []</span><br><span class="line">		<span class="keyword">for</span> v <span class="keyword">in</span> row.values():</span><br><span class="line">			body.append(v)</span><br><span class="line">		allData.append(<span class="built_in">tuple</span>(body))</span><br><span class="line">	</span><br><span class="line">	allData = tablib.Dataset(*allData, headers=tableHeader)</span><br><span class="line">	<span class="built_in">open</span>(<span class="string">&#x27;C:\\Users\\song\\Desktop\\2018-data.xlsx&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>).write(allData.xlsx)</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
-
-<p>Good to see you!</p>
-]]></content>
-      <categories>
-        <category>AI</category>
-        <category>test</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-        <tag>test</tag>
+        <tag>Hexo</tag>
+        <tag>Hello World</tag>
+        <tag>Automatic generation</tag>
       </tags>
   </entry>
 </search>

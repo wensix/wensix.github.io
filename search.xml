@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hello World</title>
-    <url>/2021/03/13/hello-world/</url>
+    <url>/post/3eeb.html</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
@@ -30,7 +30,7 @@
   </entry>
   <entry>
     <title>AI-wcz test</title>
-    <url>/2021/03/13/AI-wcz-test/</url>
+    <url>/post/f6f3.html</url>
     <content><![CDATA[<p>I am AI-wcz.</p>
 <p>I’m writing a new page.</p>
 <p>This is part of my code:</p>
@@ -40,5 +40,13 @@
 
 <p>Good to see you!</p>
 ]]></content>
+      <categories>
+        <category>AI</category>
+        <category>test</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>test</tag>
+      </tags>
   </entry>
 </search>

@@ -14,7 +14,7 @@
 <h2 id="第三方包-库的安装"><a href="#第三方包-库的安装" class="headerlink" title="第三方包/库的安装"></a>第三方包/库的安装</h2><blockquote>
 <p>此文章的定向爬虫需要三个第三方库/包，分别是<code>requests</code>库、<code>demjson</code>库、<code>tablib</code>库。<br><code>requests</code>库：用来向网络发起请求，即向指定URL申请网页资源；<br><code>demjson</code>库：用来将非标准的JSON格式转换为标准的JSON格式，或者说是转换成字典，因为本程序就是被转换成了字典；<br><code>tablib</code>库：用来将处理好的数据写入XLSX格式的文件中。</p>
 </blockquote>
-<h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h3><p>在<code>Windows</code>下使用<code>WIN+R</code>打开运行窗口，输入<code>cmd</code>回车，打开命令黑窗口，在此窗口下依次执行如下安装命令，每执行一个命令按一下回车：</p>
+<h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h3><p>在<code>Windows</code>下使用<code>WIN</code>+<code>R</code>打开<code>运行</code>窗口，输入<code>cmd</code>回车，打开命令黑窗口，在此窗口下依次执行如下安装命令，每执行一个命令按一下回车：</p>
 <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">pip <span class="keyword">install</span> requests</span><br><span class="line">pip <span class="keyword">install</span> demjson</span><br><span class="line">pip <span class="keyword">install</span> tablib</span><br></pre></td></tr></table></figure>
 
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><blockquote>
@@ -26,7 +26,7 @@
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">urla</span> = <span class="string">&quot;http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=2018-12-31&amp;count=20&amp;pname=20&amp;titType=null&amp;page=&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="pages的值"><a href="#pages的值" class="headerlink" title="pages的值"></a>pages的值</h3><blockquote>
-<p>此变量是当年数据的页数，也就是说，如果是要爬取2018年的数据，在和讯网上这一年的数据一共有208页，想要哪一年的数据，就现在和讯网上看这一年的数据有多少页，这个页数在网页中数据表格的下面</p>
+<p>此变量是当年数据的页数，也就是说，如果是要爬取2018年的数据，在和讯网上这一年的数据一共有208页，想要哪一年的数据，就先在和讯网上看这一年的数据有多少页，这个页数在网页中数据表格的下面</p>
 </blockquote>
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">pages</span> = <span class="number">208</span></span><br></pre></td></tr></table></figure>
 
@@ -36,11 +36,11 @@
 <figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">open</span><span class="params">(<span class="string">&#x27;C:\\Users\\song\\Desktop\\2018-data.xlsx&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>)</span></span><span class="selector-class">.write</span>(allData.xlsx)</span><br></pre></td></tr></table></figure>
 
 <h2 id="程序运行"><a href="#程序运行" class="headerlink" title="程序运行"></a>程序运行</h2><blockquote>
-<p>改好程序的相关变量后保存，然后右键点击文件，点击属性，获取该程序文件的路径，比如我的程序存储在<code>F:\2021dasixia\stest</code>下，接着<code>WIN</code>+<code>R</code>打开运行窗口，输入<code>cmd</code>回车打开命令黑窗口，将获取的程序存储路径和程序名字拼接在一起，执行如下命令，即可爬取指定年份的社会责任数据<br>拼接后的完整路径：<code>F:\2021dasixia\stest\hexunScrapySpider.py</code></p>
+<p>改好程序的相关变量后保存，然后<code>右键</code>点击文件，点击<code>属性</code>，获取该程序文件的路径，比如我的程序存储在<code>F:\2021dasixia\stest</code>下，接着<code>WIN</code>+<code>R</code>打开<code>运行</code>窗口，输入<code>cmd</code>回车打开命令黑窗口，将获取的程序存储路径和程序名字拼接在一起，执行如下命令，即可爬取指定年份的社会责任数据<br>拼接后的完整路径：<code>F:\2021dasixia\stest\hexunScrapySpider.py</code></p>
 </blockquote>
 <figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line">#Windows下在命令黑窗口执行程序命令</span><br><span class="line">python F:<span class="symbol">\2</span>021dasixia<span class="symbol">\s</span>test<span class="symbol">\h</span>exunScrapySpider.py</span><br></pre></td></tr></table></figure>
 
-<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><p><a href="https://github.com/wencongzhao/hexunScrapySpider">完整代码</a></p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p><a href="https://github.com/wencongzhao/hexunScrapySpider">完整代码</a></p>
 ]]></content>
       <categories>
         <category>Tech</category>

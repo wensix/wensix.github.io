@@ -1,131 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AI-wcz test</title>
-    <url>/post/f6f3.html</url>
-    <content><![CDATA[<p>I am AI-wcz.<br>I am writing a new page.<br>This is part of my code:</p>
-<span id="more"></span>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> demjson</span><br><span class="line"><span class="keyword">import</span> tablib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLDATA</span>(<span class="params">url, kv</span>):</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		r = requests.get(url, headers = kv, timeout = <span class="number">30</span>)</span><br><span class="line">		r.raise_for_status()</span><br><span class="line">		r.encoding = r.apparent_encoding</span><br><span class="line">		<span class="keyword">return</span> r.text</span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;ERROR&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">	urla = <span class="string">&quot;http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=2018-12-31&amp;count=20&amp;pname=20&amp;titType=null&amp;page=&quot;</span></span><br><span class="line">	pages = <span class="number">208</span></span><br><span class="line">	kv = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36&#x27;</span>&#125;</span><br><span class="line">	data = []</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,pages+<span class="number">1</span>):</span><br><span class="line">		url = urla + <span class="built_in">str</span>(page)</span><br><span class="line">		demo = getHTMLDATA(url, kv)</span><br><span class="line">		html = demo[<span class="number">13</span>:-<span class="number">1</span>]</span><br><span class="line">		dataDict = demjson.decode(html)</span><br><span class="line">		dataList = dataDict[<span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">		<span class="keyword">for</span> dictInList <span class="keyword">in</span> dataList:</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;StockNameLink&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Hstock&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Wstock&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Tstock&#x27;</span>]</span><br><span class="line">		data += dataList</span><br><span class="line">		time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">	allData = []</span><br><span class="line">	tableHeader = <span class="built_in">tuple</span>([<span class="string">&quot;序号&quot;</span>,<span class="string">&quot;股票名称/代码&quot;</span>,<span class="string">&quot;股东责任&quot;</span>,<span class="string">&quot;总得分&quot;</span>,<span class="string">&quot;等级&quot;</span>,<span class="string">&quot;员工责任&quot;</span>,<span class="string">&quot;供应商、客户和消费者权益责任&quot;</span>,<span class="string">&quot;环境责任&quot;</span>,<span class="string">&quot;社会责任&quot;</span>])</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> row <span class="keyword">in</span> data:</span><br><span class="line">		body = []</span><br><span class="line">		<span class="keyword">for</span> v <span class="keyword">in</span> row.values():</span><br><span class="line">			body.append(v)</span><br><span class="line">		allData.append(<span class="built_in">tuple</span>(body))</span><br><span class="line">	</span><br><span class="line">	allData = tablib.Dataset(*allData, headers=tableHeader)</span><br><span class="line">	<span class="built_in">open</span>(<span class="string">&#x27;C:\\Users\\song\\Desktop\\2018-data.xlsx&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>).write(allData.xlsx)</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
-
-<p>Good to see you!</p>
-]]></content>
-      <categories>
-        <category>Test</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git Usage</title>
-    <url>/post/9b4f.html</url>
-    <content><![CDATA[<blockquote>
-<p><strong>Git</strong> 使用手册<br>本文主要记录使用<strong>Git</strong>这个软件中一些个人常用的命令</p>
-</blockquote>
-<span id="more"></span>
-
-<h3 id="查看当前-Git-用户"><a href="#查看当前-Git-用户" class="headerlink" title="查看当前 Git 用户"></a>查看当前 Git 用户</h3><figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">git</span> <span class="comment">config</span> --<span class="comment">global</span> --<span class="comment">list</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="更换用户"><a href="#更换用户" class="headerlink" title="更换用户"></a>更换用户</h3><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.name</span> <span class="string">&quot;wensix&quot;</span></span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.email</span> <span class="string">&quot;2804849229@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Clone仓库"><a href="#Clone仓库" class="headerlink" title="Clone仓库"></a>Clone仓库</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/wensix/</span>hello-world.git</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h3><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git status</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="查看仓库提交日志"><a href="#查看仓库提交日志" class="headerlink" title="查看仓库提交日志"></a>查看仓库提交日志</h3><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="本地仓库新增文件同步到云仓库"><a href="#本地仓库新增文件同步到云仓库" class="headerlink" title="本地仓库新增文件同步到云仓库"></a>本地仓库新增文件同步到云仓库</h3><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">add</span> <span class="keyword">test</span><span class="number">.</span>txt</span><br><span class="line">git commit -m <span class="string">&quot;test.txt&quot;</span></span><br><span class="line">git <span class="keyword">push</span> origin main</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">touch <span class="built_in">config</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="SSH创建公私密钥"><a href="#SSH创建公私密钥" class="headerlink" title="SSH创建公私密钥"></a>SSH创建公私密钥</h3><figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> rsa</span><br><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> dsa</span><br><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> <span class="symbol">ed25519</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">ssh -T <span class="symbol">git@</span>github.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="ssh-add命令"><a href="#ssh-add命令" class="headerlink" title="ssh-add命令"></a>ssh-add命令</h3><h4 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h4><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ssh-agent bash</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="当前用户和密钥，查看ssh-agent中的密钥"><a href="#当前用户和密钥，查看ssh-agent中的密钥" class="headerlink" title="当前用户和密钥，查看ssh-agent中的密钥"></a>当前用户和密钥，查看ssh-agent中的密钥</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">ssh-<span class="builtin-name">add</span> -l</span><br></pre></td></tr></table></figure>
-
-<h4 id="从ssh-agent中删除密钥"><a href="#从ssh-agent中删除密钥" class="headerlink" title="从ssh-agent中删除密钥"></a>从ssh-agent中删除密钥</h4><figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">ssh-add -d ~<span class="regexp">/.ssh/i</span>d_xxx.pub</span><br></pre></td></tr></table></figure>
-
-<h4 id="把专用密钥添加到-ssh-agent-的高速缓存中"><a href="#把专用密钥添加到-ssh-agent-的高速缓存中" class="headerlink" title="把专用密钥添加到 ssh-agent 的高速缓存中"></a>把专用密钥添加到 ssh-agent 的高速缓存中</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">ssh-add <span class="regexp">/c/</span>Users<span class="regexp">/wencongzhao/</span>.ssh/id_ed25519</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Tech</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>command</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HEXO Usage</title>
-    <url>/post/de9d.html</url>
-    <content><![CDATA[<blockquote>
-<p>前言<br><strong>Hexo</strong>常用命令记录</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="基本Hexo操作"><a href="#基本Hexo操作" class="headerlink" title="基本Hexo操作"></a>基本Hexo操作</h2><h3 id="清理Hexo的缓存"><a href="#清理Hexo的缓存" class="headerlink" title="清理Hexo的缓存"></a>清理Hexo的缓存</h3><p>用于清理<code>Hexo</code>的缓存，建议生成进行操作之前都进行<code>clean</code>操作，可以消除不必要的<code>bug</code></p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo clean</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="渲染生成静态页面"><a href="#渲染生成静态页面" class="headerlink" title="渲染生成静态页面"></a>渲染生成静态页面</h3><p>用于根据已编辑的<code>config</code>或<code>markdown</code>生成<code>html</code>页面</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo g</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="挂载部署生成的静态页面"><a href="#挂载部署生成的静态页面" class="headerlink" title="挂载部署生成的静态页面"></a>挂载部署生成的静态页面</h3><p>将生成的网页<code>deploy</code>到设定好的位置，可以是<code>Github Pages</code> ，也可以是一个<code>IP</code>等等，取决于站点配置文件<code>_config.yaml</code>文件里的配置</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo d</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="挂载到本地运行"><a href="#挂载到本地运行" class="headerlink" title="挂载到本地运行"></a>挂载到本地运行</h3><p>将生成的网页挂载在本地主机<code>IP</code>的<code>4000</code>端口上，可以在正式发布前检验页面的内容和样式是否正确无误</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo s</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="生成博客新文章"><a href="#生成博客新文章" class="headerlink" title="生成博客新文章"></a>生成博客新文章</h3><p>在<code>Git</code>窗口使用该命令可以在<code>D:\Blog\source\_posts</code>生成一个<code>.md</code>格式的<code>Markdown</code>文件，此即博客新文章。<a href="https://wensix.github.io/post/3eeb.html">更多参考</a></p>
-<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type"></span>&quot;My <span class="keyword">new</span> <span class="type">post</span>&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://www.chenlianhan.com/2020/03/20/HEXO-NEXT%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89">http://www.chenlianhan.com/2020/03/20/HEXO-NEXT%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89</a></li>
-<li><a href="https://wensix.github.io/post/3eeb.html">https://wensix.github.io/post/3eeb.html</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Tech</category>
-      </categories>
-      <tags>
-        <tag>command</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/post/3eeb.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>Others</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Hello World</tag>
-        <tag>Automatic generation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>银河麒麟操作系统V4下mariaDB10.3.23安装</title>
     <url>/post/e1b3.html</url>
     <content><![CDATA[<blockquote>
@@ -133,16 +8,17 @@
 </blockquote>
 <span id="more"></span>
 
-<h1 id="银河麒麟操作系统V4下mariaDB10-3-23安装"><a href="#银河麒麟操作系统V4下mariaDB10-3-23安装" class="headerlink" title="银河麒麟操作系统V4下mariaDB10.3.23安装"></a>银河麒麟操作系统V4下mariaDB10.3.23安装</h1><blockquote>
-<h2 id="一、参考资料"><a href="#一、参考资料" class="headerlink" title="一、参考资料"></a>一、参考资料</h2></blockquote>
+<blockquote>
+<h1 id="一、参考资料"><a href="#一、参考资料" class="headerlink" title="一、参考资料"></a>一、参考资料</h1></blockquote>
 <p>1.<a href="https://www.uc23.net/jiaocheng/71064.html">银河麒麟4.0.2安装教程-电脑系统安装手册_系统安装教程_uc电脑园 (uc23.net)</a></p>
 <p>2.<a href="https://note.youdao.com/s/QT31OQah">https://note.youdao.com/s/QT31OQah</a></p>
 <p>3.中标麒麟操作系统下mariaDB10.3.23的安装测试.docx</p>
+<p>4.<a href="https://blog.csdn.net/qq_32786873/article/details/78846008">https://blog.csdn.net/qq_32786873/article/details/78846008</a></p>
 <blockquote>
-<h2 id="二、安装过程"><a href="#二、安装过程" class="headerlink" title="二、安装过程"></a>二、安装过程</h2></blockquote>
+<h1 id="二、安装过程"><a href="#二、安装过程" class="headerlink" title="二、安装过程"></a>二、安装过程</h1></blockquote>
 <blockquote>
 <h3 id="1-在VMware中安装银河麒麟V4操作系统"><a href="#1-在VMware中安装银河麒麟V4操作系统" class="headerlink" title="1.在VMware中安装银河麒麟V4操作系统"></a>1.在VMware中安装银河麒麟V4操作系统</h3></blockquote>
-<p>安装过程与第三个参考资料类似，区别在于<strong>版本</strong>选择要选“<strong>Ubuntu 64位</strong>”</p>
+<p>安装过程与第三个参考资料类似，区别在于<code>版本</code>选择要选“<code>Ubuntu 64位</code>”</p>
 <p><img src="http://121.196.218.245/images/2021/07/14/QQ20210714205336.png" alt="QQ20210714205336.png"></p>
 <p>开启此虚拟机后，选择第二个，回车</p>
 <p><img src="http://121.196.218.245/images/2021/07/14/QQ20210714205546.png" alt="QQ20210714205546.png"></p>
@@ -183,7 +59,7 @@
 
 <p><img src="http://121.196.218.245/images/2021/07/14/QQ20210714231340.png" alt="QQ20210714231340.png"></p>
 <p><img src="http://121.196.218.245/images/2021/07/14/QQ20210714231428.png" alt="QQ20210714231428.png"></p>
-<h4 id="2-7-设置编译选项，并解释"><a href="#2-7-设置编译选项，并解释" class="headerlink" title="2.7 设置编译选项，并解释"></a>2.7 设置编译选项，并解释</h4><p>在**<code>mariadb的安装目录</code><strong>下(包含</strong>CMakeLists.txt**文件的目录)，执行如下命令</p>
+<h4 id="2-7-设置编译选项，并解释"><a href="#2-7-设置编译选项，并解释" class="headerlink" title="2.7 设置编译选项，并解释"></a>2.7 设置编译选项，并解释</h4><p>在<code>mariadb的安装目录</code>下(包含<code>CMakeLists.txt</code>文件的目录)，执行如下命令</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo cmake . -DCMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span>/mysql \</span><br><span class="line">            -DMYSQL_DATADIR=/usr/<span class="built_in">local</span>/mysql/data \</span><br><span class="line">            -DSYSCONFDIR=/etc \</span><br><span class="line">            -DWITH_INNOBASE_STORAGE_ENGINE=1 \</span><br><span class="line">            -DWITH_ARCHIVE_STORAGE_ENGINE=1 \</span><br><span class="line">            -DWITH_BLACKHOLE_STORAGE_ENGINE=1 \</span><br><span class="line">            -DWITH_READLINE=1 \</span><br><span class="line">            -DWITH_SSL=system \</span><br><span class="line">            -DWITH_ZLIB=system \</span><br><span class="line">            -DWITH_LIBWRAP=0 \</span><br><span class="line">            -DMYSQL_UNIX_ADDR=/tmp/mysql.sock \</span><br><span class="line">            -DDEFAULT_CHARSET=utf8 \</span><br><span class="line">            -DDEFAULT_COLLATION=utf8_general_ci \</span><br><span class="line">	    -DCMAKE_BUILD_TYPE:STRING=Debug \</span><br><span class="line">        -DENABLE_DEBUG_SYNC:BOOL=ON  \</span><br><span class="line">        -DUSE_ARIA_FOR_TMP_TABLES:BOOL=ON  \</span><br><span class="line">        -DWITH_EMBEDDED_SERVER:BOOL=OFF \</span><br><span class="line">        -DWITH_EXTRA_CHARSETS:STRING=all \</span><br><span class="line">        -DWITH_FEEDBACK:BOOL=OFF</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://121.196.218.245/images/2021/07/14/QQ20210714232153.png" alt="QQ20210714232153.png"></p>
@@ -191,6 +67,39 @@
 <h4 id="2-8-开始正常编译"><a href="#2-8-开始正常编译" class="headerlink" title="2.8 开始正常编译"></a>2.8 开始正常编译</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#在mariadb的安装目录下：</span></span><br><span class="line">sudo make</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://121.196.218.245/images/2021/07/14/QQ20210714232455.png" alt="QQ20210714232455.png"></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#在mariadb的安装目录下：</span></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715002743.png" alt="QQ20210715002743.png"></p>
+<h4 id="2-9-配置my-cnf-文件"><a href="#2-9-配置my-cnf-文件" class="headerlink" title="2.9 配置my.cnf 文件"></a>2.9 配置my.cnf 文件</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将源代码包中my.cnf 文件（类似于下面的目录mariadb-10.3.23/debian/additions/my.cnf）复制到 /etc/mysql/my.cnf</span></span><br><span class="line">cp mariadb-10.3.23/debian/additions/my.cnf   /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715003140.png" alt="QQ20210715003140.png"></p>
+<p>该文件中的<code>basedir</code>与<code>datadir</code>应当与<code>步骤2.7</code>中的<code>cmake</code>的第一个、第二个目录保持一致。在后续操作中出现错误时应根据情况修改此文件</p>
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715003717.png" alt="QQ20210715003717.png"></p>
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715003651.png" alt="QQ20210715003651.png"></p>
+<h4 id="2-10-设置系统变量"><a href="#2-10-设置系统变量" class="headerlink" title="2.10 设置系统变量"></a>2.10 设置系统变量</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#切换到系统root用户的状态，执行下面两条命令</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export PATH=\$PATH:/usr/local/mysql/bin&quot;</span> &gt; /etc/profile.d/mysqld.sh</span><br><span class="line"><span class="built_in">source</span> /etc/profile.d/mysqld.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715004056.png" alt="QQ20210715004056.png"></p>
+<h4 id="2-11-初始化数据库"><a href="#2-11-初始化数据库" class="headerlink" title="2.11 初始化数据库"></a>2.11 初始化数据库</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mysql/</span><br><span class="line">sudo scripts/mysql_install_db --user=mysql --datadir=/usr/<span class="built_in">local</span>/mysql/data/</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715004307.png" alt="QQ20210715004307.png"></p>
+<h4 id="2-12-添加PATH路径"><a href="#2-12-添加PATH路径" class="headerlink" title="2.12 添加PATH路径"></a>2.12 添加PATH路径</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"><span class="comment">#在最后一行添加</span></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/mysql/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715004531.png" alt="QQ20210715004531.png"></p>
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715004515.png" alt="QQ20210715004515.png"></p>
+<h4 id="2-13-启动服务"><a href="#2-13-启动服务" class="headerlink" title="2.13 启动服务"></a>2.13 启动服务</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/mysql/support-files/mysql.server start</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715004747.png" alt="QQ20210715004747.png"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">同时可通过查看<span class="number">3306</span>端口判断服务是否正常启动：</span><br><span class="line">ss -tunl |grep <span class="number">3306</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715004925.png" alt="QQ20210715004925.png"></p>
+<h4 id="2-14-更改密码"><a href="#2-14-更改密码" class="headerlink" title="2.14 更改密码"></a>2.14 更改密码</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation  或  &#x27;/usr/local/mysql/bin/mysqladmin&#x27; -u root password &#x27;new-password&#x27;(直接修改root密码)</span><br></pre></td></tr></table></figure>
+
+<p>当使用<code>mysql_secure_installation</code>语句后会进行安全配置向导，具体配置过程可参考“一、参考资料”中的第四个链接或者第三个<code>docx</code>文档中步骤<code>2.13</code></p>
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715005229.png" alt="QQ20210715005229.png"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">最后使用自己设置的root密码即可正常登录：</span><br><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715005608.png" alt="QQ20210715005608.png"></p>
+<p><img src="http://121.196.218.245/images/2021/07/15/QQ20210715005826.png" alt="QQ20210715005826.png"></p>
 ]]></content>
       <categories>
         <category>Tech</category>
@@ -249,6 +158,131 @@
       <tags>
         <tag>crawler</tag>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HEXO Usage</title>
+    <url>/post/de9d.html</url>
+    <content><![CDATA[<blockquote>
+<p>前言<br><strong>Hexo</strong>常用命令记录</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="基本Hexo操作"><a href="#基本Hexo操作" class="headerlink" title="基本Hexo操作"></a>基本Hexo操作</h2><h3 id="清理Hexo的缓存"><a href="#清理Hexo的缓存" class="headerlink" title="清理Hexo的缓存"></a>清理Hexo的缓存</h3><p>用于清理<code>Hexo</code>的缓存，建议生成进行操作之前都进行<code>clean</code>操作，可以消除不必要的<code>bug</code></p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo clean</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="渲染生成静态页面"><a href="#渲染生成静态页面" class="headerlink" title="渲染生成静态页面"></a>渲染生成静态页面</h3><p>用于根据已编辑的<code>config</code>或<code>markdown</code>生成<code>html</code>页面</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo g</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="挂载部署生成的静态页面"><a href="#挂载部署生成的静态页面" class="headerlink" title="挂载部署生成的静态页面"></a>挂载部署生成的静态页面</h3><p>将生成的网页<code>deploy</code>到设定好的位置，可以是<code>Github Pages</code> ，也可以是一个<code>IP</code>等等，取决于站点配置文件<code>_config.yaml</code>文件里的配置</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo d</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="挂载到本地运行"><a href="#挂载到本地运行" class="headerlink" title="挂载到本地运行"></a>挂载到本地运行</h3><p>将生成的网页挂载在本地主机<code>IP</code>的<code>4000</code>端口上，可以在正式发布前检验页面的内容和样式是否正确无误</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hexo s</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="生成博客新文章"><a href="#生成博客新文章" class="headerlink" title="生成博客新文章"></a>生成博客新文章</h3><p>在<code>Git</code>窗口使用该命令可以在<code>D:\Blog\source\_posts</code>生成一个<code>.md</code>格式的<code>Markdown</code>文件，此即博客新文章。<a href="https://wensix.github.io/post/3eeb.html">更多参考</a></p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type"></span>&quot;My <span class="keyword">new</span> <span class="type">post</span>&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.chenlianhan.com/2020/03/20/HEXO-NEXT%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89">http://www.chenlianhan.com/2020/03/20/HEXO-NEXT%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89</a></li>
+<li><a href="https://wensix.github.io/post/3eeb.html">https://wensix.github.io/post/3eeb.html</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>command</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git Usage</title>
+    <url>/post/9b4f.html</url>
+    <content><![CDATA[<blockquote>
+<p><strong>Git</strong> 使用手册<br>本文主要记录使用<strong>Git</strong>这个软件中一些个人常用的命令</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="查看当前-Git-用户"><a href="#查看当前-Git-用户" class="headerlink" title="查看当前 Git 用户"></a>查看当前 Git 用户</h3><figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">git</span> <span class="comment">config</span> --<span class="comment">global</span> --<span class="comment">list</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="更换用户"><a href="#更换用户" class="headerlink" title="更换用户"></a>更换用户</h3><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.name</span> <span class="string">&quot;wensix&quot;</span></span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> user<span class="variable">.email</span> <span class="string">&quot;2804849229@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Clone仓库"><a href="#Clone仓库" class="headerlink" title="Clone仓库"></a>Clone仓库</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/wensix/</span>hello-world.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h3><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git status</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仓库提交日志"><a href="#查看仓库提交日志" class="headerlink" title="查看仓库提交日志"></a>查看仓库提交日志</h3><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="本地仓库新增文件同步到云仓库"><a href="#本地仓库新增文件同步到云仓库" class="headerlink" title="本地仓库新增文件同步到云仓库"></a>本地仓库新增文件同步到云仓库</h3><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">add</span> <span class="keyword">test</span><span class="number">.</span>txt</span><br><span class="line">git commit -m <span class="string">&quot;test.txt&quot;</span></span><br><span class="line">git <span class="keyword">push</span> origin main</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">touch <span class="built_in">config</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="SSH创建公私密钥"><a href="#SSH创建公私密钥" class="headerlink" title="SSH创建公私密钥"></a>SSH创建公私密钥</h3><figure class="highlight excel"><table><tr><td class="code"><pre><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> rsa</span><br><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> dsa</span><br><span class="line">ssh-keygen -C <span class="string">&quot;2804849229@qq.com&quot;</span> -<span class="built_in">t</span> <span class="symbol">ed25519</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">ssh -T <span class="symbol">git@</span>github.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="ssh-add命令"><a href="#ssh-add命令" class="headerlink" title="ssh-add命令"></a>ssh-add命令</h3><h4 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h4><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ssh-agent bash</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="当前用户和密钥，查看ssh-agent中的密钥"><a href="#当前用户和密钥，查看ssh-agent中的密钥" class="headerlink" title="当前用户和密钥，查看ssh-agent中的密钥"></a>当前用户和密钥，查看ssh-agent中的密钥</h4><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">ssh-<span class="builtin-name">add</span> -l</span><br></pre></td></tr></table></figure>
+
+<h4 id="从ssh-agent中删除密钥"><a href="#从ssh-agent中删除密钥" class="headerlink" title="从ssh-agent中删除密钥"></a>从ssh-agent中删除密钥</h4><figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">ssh-add -d ~<span class="regexp">/.ssh/i</span>d_xxx.pub</span><br></pre></td></tr></table></figure>
+
+<h4 id="把专用密钥添加到-ssh-agent-的高速缓存中"><a href="#把专用密钥添加到-ssh-agent-的高速缓存中" class="headerlink" title="把专用密钥添加到 ssh-agent 的高速缓存中"></a>把专用密钥添加到 ssh-agent 的高速缓存中</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">ssh-add <span class="regexp">/c/</span>Users<span class="regexp">/wencongzhao/</span>.ssh/id_ed25519</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI-wcz test</title>
+    <url>/post/f6f3.html</url>
+    <content><![CDATA[<p>I am AI-wcz.<br>I am writing a new page.<br>This is part of my code:</p>
+<span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> demjson</span><br><span class="line"><span class="keyword">import</span> tablib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLDATA</span>(<span class="params">url, kv</span>):</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		r = requests.get(url, headers = kv, timeout = <span class="number">30</span>)</span><br><span class="line">		r.raise_for_status()</span><br><span class="line">		r.encoding = r.apparent_encoding</span><br><span class="line">		<span class="keyword">return</span> r.text</span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;ERROR&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">	urla = <span class="string">&quot;http://stockdata.stock.hexun.com/zrbg/data/zrbList.aspx?date=2018-12-31&amp;count=20&amp;pname=20&amp;titType=null&amp;page=&quot;</span></span><br><span class="line">	pages = <span class="number">208</span></span><br><span class="line">	kv = &#123;<span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36&#x27;</span>&#125;</span><br><span class="line">	data = []</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,pages+<span class="number">1</span>):</span><br><span class="line">		url = urla + <span class="built_in">str</span>(page)</span><br><span class="line">		demo = getHTMLDATA(url, kv)</span><br><span class="line">		html = demo[<span class="number">13</span>:-<span class="number">1</span>]</span><br><span class="line">		dataDict = demjson.decode(html)</span><br><span class="line">		dataList = dataDict[<span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">		<span class="keyword">for</span> dictInList <span class="keyword">in</span> dataList:</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;StockNameLink&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Hstock&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Wstock&#x27;</span>]</span><br><span class="line">			<span class="keyword">del</span> dictInList[<span class="string">&#x27;Tstock&#x27;</span>]</span><br><span class="line">		data += dataList</span><br><span class="line">		time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">	allData = []</span><br><span class="line">	tableHeader = <span class="built_in">tuple</span>([<span class="string">&quot;序号&quot;</span>,<span class="string">&quot;股票名称/代码&quot;</span>,<span class="string">&quot;股东责任&quot;</span>,<span class="string">&quot;总得分&quot;</span>,<span class="string">&quot;等级&quot;</span>,<span class="string">&quot;员工责任&quot;</span>,<span class="string">&quot;供应商、客户和消费者权益责任&quot;</span>,<span class="string">&quot;环境责任&quot;</span>,<span class="string">&quot;社会责任&quot;</span>])</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> row <span class="keyword">in</span> data:</span><br><span class="line">		body = []</span><br><span class="line">		<span class="keyword">for</span> v <span class="keyword">in</span> row.values():</span><br><span class="line">			body.append(v)</span><br><span class="line">		allData.append(<span class="built_in">tuple</span>(body))</span><br><span class="line">	</span><br><span class="line">	allData = tablib.Dataset(*allData, headers=tableHeader)</span><br><span class="line">	<span class="built_in">open</span>(<span class="string">&#x27;C:\\Users\\song\\Desktop\\2018-data.xlsx&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>).write(allData.xlsx)</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<p>Good to see you!</p>
+]]></content>
+      <categories>
+        <category>Test</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/post/3eeb.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>Others</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Hello World</tag>
+        <tag>Automatic generation</tag>
       </tags>
   </entry>
 </search>
